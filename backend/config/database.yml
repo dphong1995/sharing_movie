@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: sharing_movie_development
+  host: db
+  password: root
+  username: postgres
+
+test:
+  <<: *default
+  database: sharing_movie_test
+  host: db
+  password: root
+  username: postgres
+
+production:
+  <<: *default
+  url: <%= ENV.fetch("DATABASE_URL") { '' } %>
